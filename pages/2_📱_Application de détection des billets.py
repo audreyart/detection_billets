@@ -144,28 +144,28 @@ with tab2:
         dataframe = pd.read_csv(fichier)
         st.write(dataframe)
 
-    if st.button("Calculer à partir du fichier téléchargé"):
+        if st.button("Calculer à partir du fichier téléchargé"):
 
-        test_algo = dataframe
+            test_algo = dataframe
 
-        st.text('Dataframe sans valeurs manquantes :')
-        st.table(test_algo)
+            st.text('Dataframe sans valeurs manquantes :')
+            st.table(test_algo)
 
-        st.text('On garde les quatre variables explicatives : ')
-        test_algo = test_algo[['margin_up','margin_low','length','height_right']] # Les 4 variables explicatives
-        st.table(test_algo)
+            st.text('On garde les quatre variables explicatives : ')
+            test_algo = test_algo[['margin_up','margin_low','length','height_right']] # Les 4 variables explicatives
+            st.table(test_algo)
 
-        test_algo = sm.tools.add_constant(test_algo) # Ajout de la constante
-        st.text('On ajoute la constante :')
-        st.table(test_algo)
+            test_algo = sm.tools.add_constant(test_algo) # Ajout de la constante
+            st.text('On ajoute la constante :')
+            st.table(test_algo)
 
-        predProbaSm = res2_load.predict(test_algo) # Prédiction
+            predProbaSm = res2_load.predict(test_algo) # Prédiction
 
-        predSm = np.where(predProbaSm > 0.5, True, False)
-        
-        st.markdown("Prédiction sur les billets du fichier billets_production.csv : ")
-        prediction = pd.DataFrame({"identifiant":id,"Probabilité":predProbaSm,"Prédiction":predSm})
-        st.table(prediction)
+            predSm = np.where(predProbaSm > 0.5, True, False)
 
-        st.write("Nombre de vrais billets : ",prediction['Probabilité'].loc[prediction['Probabilité']>0.5].count())
-        st.write("Nombre de faux billets : ",prediction['Probabilité'].loc[prediction['Probabilité']<0.5].count())
+            st.markdown("Prédiction sur les billets du fichier billets_production.csv : ")
+            prediction = pd.DataFrame({"identifiant":id,"Probabilité":predProbaSm,"Prédiction":predSm})
+            st.table(prediction)
+
+            st.write("Nombre de vrais billets : ",prediction['Probabilité'].loc[prediction['Probabilité']>0.5].count())
+            st.write("Nombre de faux billets : ",prediction['Probabilité'].loc[prediction['Probabilité']<0.5].count())
