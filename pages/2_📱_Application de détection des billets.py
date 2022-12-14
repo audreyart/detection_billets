@@ -146,9 +146,9 @@ with tab2:
         dataframe = pd.read_csv(fichier)
         st.write(dataframe)
 
-        if st.button("Calculer à partir du fichier téléchargé"):
+    if st.button("Calculer à partir du fichier téléchargé"):
 
-            test_algo = dataframe
+        if test_algo == dataframe:
 
             st.text('Dataframe sans valeurs manquantes :')
             st.table(test_algo)
@@ -171,6 +171,6 @@ with tab2:
 
             st.write("Nombre de vrais billets : ",prediction['Probabilité'].loc[prediction['Probabilité']>0.5].count())
             st.write("Nombre de faux billets : ",prediction['Probabilité'].loc[prediction['Probabilité']<0.5].count())
-          
-    elif fichier is None:
-        st.error("Télécharger un fichier pour le calcul")
+        
+        else:
+            st.error("Télécharger un fichier pour le calcul")
