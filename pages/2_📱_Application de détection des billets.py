@@ -135,20 +135,20 @@ with tab2:
     fichier = st.file_uploader("Choisissez un fichier")
     
     st.info("Télécharger un fichier contenant les mesures de vos billets afin de procéder au calcul. Prenez le fichier test pour modèle.")
-        
-    if fichier is not None:
-        bytes_data = fichier.getvalue()
 
-        stringio = StringIO(fichier.getvalue().decode("utf-8"))
-
-        string_data = stringio.read()
-
-        dataframe = pd.read_csv(fichier)
-        st.write(dataframe)
 
     if st.button("Calculer à partir du fichier téléchargé"):
 
-        if test_algo == dataframe:
+        if fichier is not None:
+            bytes_data = fichier.getvalue()
+
+            stringio = StringIO(fichier.getvalue().decode("utf-8"))
+
+            string_data = stringio.read()
+
+            dataframe = pd.read_csv(fichier)
+            st.write(dataframe)
+            test_algo = dataframe
 
             st.text('Dataframe sans valeurs manquantes :')
             st.table(test_algo)
