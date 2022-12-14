@@ -119,7 +119,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import RepeatedKFold
 # Préparation de la procédure de validation croisée
-cv = RepeatedKFold(n_splits=5, n_repeats= 100, maxiter=1000, random_state=1)
+cv = RepeatedKFold(n_splits=5, n_repeats= 100, random_state=1)
 model = LogisticRegression()
 precision = cross_val_score(model, X, y, scoring='precision', cv=cv, n_jobs=-1)
 # Taux d'erreur
