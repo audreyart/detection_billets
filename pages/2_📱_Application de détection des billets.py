@@ -172,3 +172,5 @@ with tab2:
             st.write("Nombre de vrais billets : ",prediction['Probabilité'].loc[prediction['Probabilité']>0.5].count())
             st.write("Nombre de faux billets : ",prediction['Probabilité'].loc[prediction['Probabilité']<0.5].count())
           
+    elif fichier is None:
+        st.error("Télécharger un fichier pour le calcul")
