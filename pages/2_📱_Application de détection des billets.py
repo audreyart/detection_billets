@@ -133,6 +133,8 @@ with tab2:
 
     # Entrer le chemin du fichier entre les guillemets
     fichier = st.file_uploader("Choisissez un fichier")
+    
+    st.info("Télécharger un fichier contenant les mesures de vos billets afin de procéder au calcul. Prenez le fichier test pour modèle.")
         
     if fichier is not None:
         bytes_data = fichier.getvalue()
@@ -169,6 +171,4 @@ with tab2:
 
             st.write("Nombre de vrais billets : ",prediction['Probabilité'].loc[prediction['Probabilité']>0.5].count())
             st.write("Nombre de faux billets : ",prediction['Probabilité'].loc[prediction['Probabilité']<0.5].count())
-            
-        else:
-            st.info("Télécharger un fichier contenant les mesures de vos billets afin de procéder au calcul")
+          
