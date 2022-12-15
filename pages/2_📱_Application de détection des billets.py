@@ -98,36 +98,6 @@ with tab2:
     st.table(billets_production)
 
 
-    # Entrer le chemin du fichier entre les guillemets
-    fichier = "billets_production.csv"
-
-    test_algo = pd.read_csv(fichier,sep=None,engine='python') #Lecture du fichier
-
-    test_algo = test_algo.fillna(XtrainBis.mean().round(2)) #Attribution de la moyenne de la variable pour les valeurs manquantes
-    # (moyenne sur les données d'entraînement)
-    st.text('Dataframe sans valeurs manquantes :')
-    st.table(test_algo)
-
-    st.text('On garde les quatre variables explicatives : ')
-    test_algo = test_algo[['margin_up','margin_low','length','height_right']] # Les 4 variables explicatives
-    st.table(test_algo)
-
-    test_algo = sm.tools.add_constant(test_algo) # Ajout de la constante
-    st.text('On ajoute la constante :')
-    st.table(test_algo)
-
-    predProbaSm = res2_load.predict(test_algo) # Prédiction
-
-    predSm = np.where(predProbaSm > 0.5, True, False)
-        
-    st.markdown("Prédiction sur les billets du fichier billets_production.csv : ")
-    prediction = pd.DataFrame({"identifiant":id,"Probabilité":predProbaSm,"Prédiction":predSm})
-    st.table(prediction)
-
-    st.write("Nombre de vrais billets : ",prediction['Probabilité'].loc[prediction['Probabilité']>0.5].count())
-    st.write("Nombre de faux billets : ",prediction['Probabilité'].loc[prediction['Probabilité']<0.5].count())
-
-
     st.subheader("Télécharger le fichier avec les billets à évaluer")
     from io import StringIO
 
