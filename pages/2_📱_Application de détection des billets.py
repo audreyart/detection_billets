@@ -97,6 +97,22 @@ with tab2:
     st.markdown("Fichier billets_production.csv :")
     st.table(billets_production)
 
+    df = pd.read_csv("billets_production.csv")
+
+    @st.experimental_memo
+    def convert_df(df):
+       return df.to_csv(index=False).encode('utf-8')
+
+
+    csv = convert_df(df)
+
+    st.download_button(
+       "Télécharger le fichier billets_production",
+       csv,
+       "file.csv",
+       "text/csv",
+       key='download-csv'
+    )
 
     st.subheader("Télécharger le fichier avec les billets à évaluer")
     from io import StringIO
