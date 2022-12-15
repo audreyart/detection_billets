@@ -148,7 +148,7 @@ with tab2:
 
             predSm = np.where(predProbaSm > 0.5, True, False)
 
-            st.markdown("Prédiction sur les billets du fichier billets_production.csv : ")
+            st.markdown("Prédiction sur les billets du fichier : ")
             prediction = pd.DataFrame({"identifiant":id,"Probabilité":predProbaSm,"Prédiction":predSm})
             st.table(prediction)
 
