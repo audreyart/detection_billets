@@ -126,7 +126,7 @@ cv = RepeatedKFold(n_splits=5, n_repeats= 100, random_state=1)
 model = LogisticRegression()
 precision = cross_val_score(model, X_scaled, y, scoring='precision', cv=cv, n_jobs=-1)
 # Taux d'erreur
-scores_error = 1 - cross_val_score(model, X, y, scoring='precision', cv=cv, n_jobs=-1)
+scores_error = 1 - cross_val_score(model, X_scaled, y, scoring='precision', cv=cv, n_jobs=-1)
 
 st.subheader("Taux d'erreur : ")
 fig,ax = plt.subplots()
