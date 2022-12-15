@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Accueil")
+st.set_page_config(page_title="Détection des faux billets")
 
 st.title("Bienvenue dans l'application de détection de faux billets")
 
