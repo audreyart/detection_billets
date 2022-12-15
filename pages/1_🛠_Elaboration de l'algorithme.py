@@ -110,7 +110,7 @@ st.markdown("Test de Wald")
 # Test de Wald
 m = [[0,1,0,0,0],[0,0,1,0,0],[0,0,0,1,0],[0,0,0,0,1]]
 res2.wald_test(m)
-st.write(res2.wald_test_terms())
+st.write(res2.wald_test_terms(scalar=True))
 st.text("Au niveau de test 5%, on rejette ici aussi l'hypothèse de nullité des coefficients.")
 st.text("Les coefficients sont donc bien significatifs.")
 # Cross validation
