@@ -113,6 +113,8 @@ with tab2:
        "text/csv",
        key='download-csv'
     )
+    
+    st.info("Vous pouvez télécharger le fichier test pour avoir un aperçu des résultats du traitement")
 
     st.subheader("Télécharger le fichier avec les billets à évaluer")
     from io import StringIO
