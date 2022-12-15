@@ -1,7 +1,6 @@
 import streamlit as st
 
 st.title("Elaboration de l'algorithme - régression logistique")
-st.set_page_config(page_title="Algorithme")
 
 import pandas as pd
 import numpy as np
